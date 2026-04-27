@@ -1,31 +1,67 @@
-## 🚀 Azure Enterprise Server: Secure Multi-Service Stack with Zero-Trust Architecture ##
+# 🚀 Azure Enterprise Server: Secure Multi-Service Stack with Zero-Trust Architecture
 
-Project Abstract
+## 📌 Project Abstract
 
-This project showcases a high-performance, multi-functional server infrastructure deployed on **Microsoft Azure**. The architecture transitions away from traditional, vulnerable hosting methods by implementing a Zero-Port Exposure strategy. Using **AlmaLinux 9**, **CyberPanel**, and **Cloudflare Zero Trust**, this stack handles Web, Mail, and Database services while keeping the origin IP completely hidden from the public internet.
+This project demonstrates a **high-performance, security-focused multi-service server infrastructure** deployed on Microsoft Azure.  
+Instead of relying on traditional exposed hosting models, the environment follows a **Zero-Port Exposure Strategy**, where public access is minimized and administrative access is tightly controlled.
 
-## 🏗️ Infrastructure Design & Provisioning ##
+Using **AlmaLinux 9**, **CyberPanel**, **OpenLiteSpeed**, and **Cloudflare Zero Trust**, the platform securely delivers:
 
+- 🌐 Web Hosting Services  
+- 📧 Business Mail Services  
+- 🗄️ Database Services  
+- 🔐 Hidden Origin IP Protection  
+- 🛡️ Layered Security Controls  
 
-# 🖥️ Server Environment
-- **OS: Compute:** Microsoft Azure Standard B2s (2 vCPU, 4GB RAM)
-- **OS:** AlmaLinux 9 (Gen 2)
-- **Storage:** 30GB Premium SSD
-- **Cloud Provider:** Microsoft Azure
-- **Networking:** Azure NSG configured
-  - All inbound ports blocked by default
-  - Port 22 (SSH) restricted to Admin IP only
+---
 
-# Core Stack & Web Hosting
-**We utilized CyberPanel for its native OpenLiteSpeed integration, providing superior performance compared to traditional Apache/Nginx setups**.
+# 🏗️ Infrastructure Design & Provisioning
 
-## 🏗️ Phase 1: Infrastructure & OS Hardening
-Before installing any services, the AlmaLinux 9 environment was secured and optimized.
+## 🖥️ Server Environment
 
-# 1. Initial System Update & Utilities
+| Component | Specification |
+|----------|---------------|
+| **Cloud Provider** | Microsoft Azure |
+| **Compute Plan** | Standard B2s |
+| **vCPU / RAM** | 2 vCPU / 4GB RAM |
+| **Operating System** | AlmaLinux 9 (Gen 2) |
+| **Storage** | 30GB Premium SSD |
+| **Security Layer** | Azure NSG |
+
+### 🔒 Network Security Model
+
+- All inbound ports blocked by default  
+- Port `22` (SSH) restricted to Admin IP only  
+- Principle of least privilege applied  
+- Reduced external attack surface  
+
+---
+
+# 🌐 Core Stack & Web Hosting
+
+CyberPanel was selected for its native **OpenLiteSpeed** integration, offering higher efficiency and lower resource usage than traditional hosting stacks.
+
+### ⚙️ Core Technologies
+
+| Layer | Technology |
+|------|------------|
+| Control Panel | CyberPanel |
+| Web Server | OpenLiteSpeed |
+| OS | AlmaLinux 9 |
+| CDN / Proxy | Cloudflare Zero Trust |
+| Database | MariaDB |
+| Mail Stack | Postfix + Dovecot |
+
+---
+
+# 🏗️ Phase 1: Infrastructure & OS Hardening
+
+Before deploying production services, the operating system was updated, secured, and prepared with administrative utilities.
+
+## 🔧 Initial System Update & Utilities
+
 ```bash
-
-# Update all system packages
+# Update all installed packages
 sudo dnf update -y
 
 # Install essential administration tools
@@ -196,78 +232,77 @@ server {
 }
 
 ```
-## PHP 8.2 Installation & Optimization ##
 
-**In an enterprise environment, PHP must be tuned for security and speed. We utilized lsphp (LiteSpeed PHP) to ensure seamless integration with the OpenLiteSpeed engine**.
+## ⚡ PHP 8.2 Deployment & Performance Optimization
 
-# 1. Installation via CyberPanel CLI
-CyberPanel usually handles the base installation, but you can manually install or add extensions using the following commands on AlmaLinux:
+### 1️⃣ Install PHP 8.2 with Common Extensions
 
 ```bash
-
-# Install PHP 8.2 and common extensions
-
-sudo dnf install lsphp82 lsphp82-common lsphp82-mysqlnd lsphp82-gd lsphp82-process lsphp82-mbstring lsphp82-xml lsphp82-opcache -y
+sudo dnf install lsphp82 lsphp82-common lsphp82-mysqlnd lsphp82-gd \
+lsphp82-process lsphp82-mbstring lsphp82-xml lsphp82-opcache -y
 
 ```
+# 📦 Installed Modules
 
-## ⚙️ PHP Configuration (`php.ini`)
+| Module     | Purpose                      |
+| ---------- | ---------------------------- |
+| `mysqlnd`  | MySQL / MariaDB connectivity |
+| `gd`       | Image processing             |
+| `mbstring` | Multi-byte character support |
+| `xml`      | XML parsing                  |
+| `opcache`  | PHP code acceleration        |
 
-To support professional web applications and larger file uploads (such as portfolio assets, images, and project files), the PHP configuration was optimized.
+2️⃣ PHP Configuration (php.ini)
 
-### 📄 File Path
+To support professional web applications, media uploads, and stable execution, the PHP runtime was optimized.
 
-`/usr/local/lsws/lsphp82/etc/php.ini`
+# 📄 File Path
 
-### ✏️ Edit the PHP Configuration
+**/usr/local/lsws/lsphp82/etc/php.ini**
+
+✏️ Edit Configuration
 
 ```bash
 sudo nano /usr/local/lsws/lsphp82/etc/php.ini
 
 ```
-# 🔧 Key Optimizations Applied
+# 🔧 Recommended Settings
 
-| Setting               | Value        | Purpose                                       |
-| --------------------- | ------------ | --------------------------------------------- |
-| `memory_limit`        | `256M`       | Ensures enough RAM for heavy scripts          |
-| `upload_max_filesize` | `64M`        | Allows high-quality image uploads             |
-| `post_max_size`       | `64M`        | Supports larger form submissions              |
-| `max_execution_time`  | `300`        | Prevents timeout during long processes        |
-| `date.timezone`       | `Asia/Dhaka` | Sets local timezone for logs and applications |
+| Setting               | Value        | Purpose                          |
+| --------------------- | ------------ | -------------------------------- |
+| `memory_limit`        | `256M`       | More RAM for heavy scripts       |
+| `upload_max_filesize` | `64M`        | Larger file uploads              |
+| `post_max_size`       | `64M`        | Supports bigger form submissions |
+| `max_execution_time`  | `300`        | Prevents timeout on long tasks   |
+| `date.timezone`       | `Asia/Dhaka` | Correct local timestamps         |
 
+# 3️⃣ OPcache Performance Boost
 
-## 3. Enabling OPcache for High Speed
-OPcache improves PHP performance by storing precompiled script bytecode in shared memory.
+**OPcache stores precompiled PHP bytecode in memory, improving speed and reducing CPU usage.**
 
 ```bash
-# Ensure OPcache is enabled in the config
+
 zend_extension=opcache.so
 opcache.enable=1
 opcache.memory_consumption=128
 
 ```
-
-# 4. Verifying PHP Status
-**You can verify which version is active and check for installed modules using these commands**:
-
+# 4️⃣ Verify PHP Status
 ```bash
-
 # Check PHP version
 /usr/local/lsws/lsphp82/bin/php -v
 
-# List installed PHP modules
+# List installed modules
+
 /usr/local/lsws/lsphp82/bin/php -m
 
 ```
-# 5. Restarting PHP Services
-Whenever you change php.ini, you must kill the existing PHP processes so the changes take effect:
-
+# 5️⃣ Apply Configuration Change
 ```bash
-# Kill old PHP processes to apply new settings
-
 killall lsphp
 
 ```
+
 ## 🗄️ Database Management (MariaDB / MySQL)
 
 In this project, **MariaDB** — a community-developed fork of MySQL — was used as the primary database engine due to its strong performance, stability, and full compatibility with AlmaLinux 9.
@@ -314,12 +349,13 @@ mysql -V
 # Secure the installation
 sudo mysql_secure_installation
 
-#Actions taken: Set root password, removed anonymous users, disallowed root login remotely, and removed the test database.
+```
+**Actions taken: Set root password, removed anonymous users, disallowed root login remotely, and removed the test database.**
 
 
 ## 📧 Enterprise Mail Service Architecture
 
-This phase covers the deployment of core mail services, authentication readiness, and preparation for reliable outbound email delivery in a cloud environment.
+**This phase covers the deployment of core mail services, authentication readiness, and preparation for reliable outbound email delivery in a cloud environment.**
 
 ---
 
@@ -342,7 +378,7 @@ This phase covers the deployment of core mail services, authentication readiness
 
 ## ⚙️ Service Management Commands
 
-To verify services are running correctly and restart after configuration changes:
+**To verify services are running correctly and restart after configuration changes:**
 
 ```bash
 # Check service status
@@ -359,7 +395,7 @@ sudo systemctl restart postfix dovecot
 
 ## 🌐 DNS Engineering for Email Deliverability
 
-Setting up the mail server software is only 50% of the job — the other 50% is proper DNS configuration to ensure emails land in the Inbox instead of Spam.
+**Setting up the mail server software is only 50% of the job — the other 50% is proper DNS configuration to ensure emails land in the Inbox instead of Spam.**
 
 ### 📌 Core DNS Records Configured
 
@@ -422,16 +458,120 @@ For modern hosting environments, using **Port 587** or **Port 465** is preferred
 
 **This approach helps bypass cloud provider restrictions while maintaining secure and professional email operations**.
 
-# 6. Mail Server Testing (CLI Tools)
-**As a professional, you should test your server using the command line**:
+# 📧 Mail Server Testing & Troubleshooting (CLI Tools)
+
+As a professional system administrator, validating mail services through the command line is essential for diagnosing SMTP connectivity and monitoring live server activity.
+
+---
+
+### 🔍 SMTP Connectivity Test
+
+Use Telnet to manually verify whether the local SMTP service is responding on Port `25`.
 
 ```bash
-
-# Testing SMTP connectivity manually
+# Test SMTP connection to local mail service
 telnet localhost 25
 
-# Checking the mail logs in real-time for errors
+```
+### 📜 Real-Time Mail Log Monitoring
+
+**Monitor the mail server logs live to detect sending, receiving, authentication, or delivery errors.**
+```bash
+# Watch mail logs in real-time
 sudo tail -f /var/log/maillog
 
 ```
+## 🛠️ Troubleshooting & Problem Solving
+
+During the deployment, several challenges were addressed:
+- **Port 25 Restriction:** Azure blocks outbound port 25. This was resolved by implementing secure SMTP submission via ports **465** and **587**.
+- **Tunnel Connectivity:** Addressed initial daemon crashes by configuring `cloudflared` as a persistent **Systemd** service.
+- **Permission Issues:** Fixed PHP execution errors by correctly mapping the `lshttpd` user permissions within the AlmaLinux filesystem.
+
+# 🌐  Production Case Study – Live Portfolio Deployment
+
+The final validation of this infrastructure was the successful deployment of a professional, high-availability portfolio website.  
+This live environment demonstrates the effectiveness of the **Zero-Trust Security Model** and **Performance Optimization Strategy** implemented throughout the project.
+
+---
+
+## 🔗 Live Access
+
+| Item | Status |
+|------|--------|
+| **Primary Domain** | `mridu.me` |
+| **Availability** | 🟢 Live & Production Ready |
+| **Security Layer** | Origin IP Hidden via Cloudflare Tunnel |
+| **SSL Status** | HTTPS Enabled |
+
+---
+
+## 🛠️ Deployment Configuration
+
+| Feature | Implementation |
+|--------|----------------|
+| **Hosting Platform** | CyberPanel + OpenLiteSpeed |
+| **Runtime Environment** | PHP 8.2 |
+| **Content Delivery** | Cloudflare Edge Network |
+| **SSL/TLS** | Let's Encrypt (Auto Renewing) |
+| **Database Engine** | MariaDB (Optimized) |
+
+---
+
+## ⚡ Performance & Optimization
+
+Enterprise-grade performance was achieved through the following enhancements:
+
+| Optimization | Benefit |
+|-------------|---------|
+| **LSCache Integration** | Reduced Time to First Byte (TTFB) |
+| **Gzip / Brotli Compression** | Smaller asset size & faster loading |
+| **OPcache Tuning** | Faster PHP execution |
+| **LiteSpeed Engine** | High concurrency with low resource usage |
+
+---
+
+## 🛡️ Security Posture
+
+| Security Layer | Protection |
+|---------------|------------|
+| **Cloudflare WAF** | Blocks malicious traffic & bots |
+| **Cloudflare Tunnel** | Hides origin server IP |
+| **SSL Offloading** | Encryption handled at edge |
+| **Azure NSG** | Strict inbound traffic control |
+
+---
+## 🔗 Live Access
+
+| Item | Details |
+|------|---------|
+| **Primary Domain** | `https://mridu.me` |
+| **Status** | 🟢 Live & Production Ready |
+| **Security** | Origin IP Hidden via Cloudflare Tunnel |
+| **SSL/TLS** | HTTPS Enabled |
+| **Availability** | Publicly Accessible with Protected Backend |
+
+### ✅ Deployment Summary
+
+**The website is running in a secure production environment with Cloudflare edge protection, encrypted HTTPS traffic, and hidden server origin infrastructure.**
+
+## ✅ Business Outcome
+
+- Professional live portfolio website  
+- Fast global content delivery  
+- Hardened production security  
+- Lower server resource usage  
+- Scalable cloud-ready architecture  
+
+---
+
+## 🚀 Live Proof of Concept
+
+This deployment serves as a real-world showcase of secure cloud hosting, web optimization, and production-grade infrastructure engineering.
+
+## 📜 License
+This project is licensed under the **MIT License**. You are free to use, modify, and distribute this architecture for your own needs.
+
+---
+*Created and Maintained by **MD. Abdulla Al Mosabbir** (Microsoft Learn Student Ambassador | System & Cloud Infrastructure Engineer)*
 
