@@ -1,18 +1,16 @@
-##  📌 Project Abstract
+## 🚀 Azure Enterprise Server: Secure Multi-Service Stack with Zero-Trust Architecture ##
+
+Project Abstract
 This project showcases a high-performance, multi-functional server infrastructure deployed on Microsoft Azure. The architecture transitions away from traditional, vulnerable hosting methods by implementing a Zero-Port Exposure strategy. Using AlmaLinux 9, CyberPanel, and Cloudflare Zero Trust, this stack handles Web, Mail, and Database services while keeping the origin IP completely hidden from the public internet.
 
-##  🏗️ Part 1: Infrastructure Design & Provisioning
-The foundation is built on an enterprise-grade Linux distribution to ensure long-term stability and security.
+🏗️ Infrastructure Design & Provisioning
+Compute: Microsoft Azure Standard B2s (2 vCPU, 4GB RAM)
 
-Compute: Microsoft Azure Standard B2s (2 vCPU, 4GB RAM).
+OS: AlmaLinux 9 (Gen 2)
 
-Operating System: AlmaLinux 9 (Gen 2).
+Storage: 30GB Premium SSD
 
-Storage: 30GB Premium SSD.
-
-Network Security Group (NSG): * Inbound: All ports (80, 443, 8090) are CLOSED by default.
-
-Management: Port 22 (SSH) is restricted to a specific Administrative IP.
+Networking: Azure NSG (All inbound ports closed by default; Port 22 restricted to Admin IP)
 
 # Part 2: Core Stack & Web Hosting
 We utilized CyberPanel for its native OpenLiteSpeed integration, providing superior performance compared to traditional Apache/Nginx setups.
