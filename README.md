@@ -11,7 +11,15 @@ Using **AlmaLinux 9**, **CyberPanel**, **OpenLiteSpeed**, and **Cloudflare Zero 
 - 📧 Business Mail Services  
 - 🗄️ Database Services  
 - 🔐 Hidden Origin IP Protection  
-- 🛡️ Layered Security Controls  
+- 🛡️ Layered Security Controls
+
+  <p align="center">
+  <img src="screenshorts/Overview.png" alt="Hybrid Cloud Overview" width="850">
+</p>
+
+  ## 🎯 Why This Project Matters
+
+This project demonstrates my hands-on ability to deploy, secure, optimize, and document a production-grade cloud server environment using Microsoft Azure and modern Zero Trust principles.
 
 ---
 
