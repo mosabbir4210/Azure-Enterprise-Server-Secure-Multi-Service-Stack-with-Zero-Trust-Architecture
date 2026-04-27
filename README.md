@@ -572,6 +572,59 @@ Enterprise-grade performance was achieved through the following enhancements:
 - Scalable cloud-ready architecture  
 
 ---
+# 📊 Enterprise Infrastructure Monitoring (Zabbix & Grafana)
+
+To ensure **high availability**, proactive maintenance, and real-time visibility, a centralized monitoring solution was implemented to continuously track infrastructure health, performance metrics, and critical services.
+
+---
+
+## 🛠️ Monitoring Stack
+
+| Component | Role | Purpose |
+|----------|------|---------|
+| **Zabbix Server** | Monitoring Core | Collects metrics, triggers alerts, and manages hosts |
+| **Zabbix Agent** | Endpoint Telemetry | Installed on AlmaLinux 9 server to send system data |
+| **Grafana** | Visualization Layer | Creates modern dashboards and analytics panels |
+| **MariaDB** | Data Storage | Stores monitoring history and trends |
+
+---
+
+## 📈 Metrics Tracked
+
+| Metric Category | Indicators Monitored |
+|----------------|----------------------|
+| **System Resources** | CPU Load, RAM Usage, Disk I/O, SWAP Performance |
+| **Service Uptime** | OpenLiteSpeed, MariaDB, Postfix Status |
+| **Network Traffic** | Inbound / Outbound Bandwidth, Tunnel Stability |
+| **Security Alerts** | SSH Brute-force Attempts, Suspicious Log Events |
+| **Disk Health** | Filesystem Usage, Low Space Warnings |
+
+---
+
+## ⚡ Operational Benefits
+
+- Real-time server health monitoring  
+- Instant alerts before outages occur  
+- Historical performance analytics  
+- Better capacity planning  
+- Improved uptime and reliability  
+
+---
+
+## 🖥️ Dashboard Visibility
+
+Grafana dashboards were integrated with Zabbix data sources to provide:
+
+- CPU / RAM live graphs  
+- Network throughput charts  
+- Service availability panels  
+- Alert trends & historical analytics  
+
+---
+
+## ✅ Result
+
+A production-ready observability stack that improves server stability, troubleshooting speed, and enterprise-grade operational awareness.
 
 ## 🚀 Live Proof of Concept
 
