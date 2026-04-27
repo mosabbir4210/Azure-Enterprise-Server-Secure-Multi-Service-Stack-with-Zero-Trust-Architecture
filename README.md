@@ -55,10 +55,14 @@ CyberPanel was selected for its native **OpenLiteSpeed** integration, offering h
 |------|------------|
 | Control Panel | CyberPanel |
 | Web Server | OpenLiteSpeed |
-| OS | AlmaLinux 9 |
-| CDN / Proxy | Cloudflare Zero Trust |
+| Runtime | PHP 8.2 |
+| Operating System | AlmaLinux 9 |
+| CDN / Zero Trust | Cloudflare Tunnel + WAF |
 | Database | MariaDB |
-| Mail Stack | Postfix + Dovecot |
+| Mail Stack | Postfix + Dovecot + SnappyMail |
+| Monitoring | Zabbix + Grafana |
+| Security | Azure NSG + SSL/TLS |
+| Cloud Platform | Microsoft Azure |
 
 ---
 
