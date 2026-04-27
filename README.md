@@ -18,11 +18,12 @@ Part 2: Core Stack & Web Hosting
 We utilized CyberPanel for its native OpenLiteSpeed integration, providing superior performance compared to traditional Apache/Nginx setups.
 
 1. Server Environment Setup
-Bash
+   
+'''Bash
 # Updating system packages
 sudo dnf update -y
 sudo dnf install wget curl nano tar epel-release -y
-
+'''
 # CyberPanel Installation with PHP 8.2 & OpenLiteSpeed
 sh <(curl https://cyberpanel.net/install.sh || wget -O - https://cyberpanel.net/install.sh)
 2. Web Hosting Features
