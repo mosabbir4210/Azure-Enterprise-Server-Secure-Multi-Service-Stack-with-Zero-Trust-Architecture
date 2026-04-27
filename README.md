@@ -7,7 +7,7 @@ This project showcases a high-performance, multi-functional server infrastructur
 ## 🏗️ Infrastructure Design & Provisioning ##
 
 
-## 🖥️ Server Environment
+# 🖥️ Server Environment
 - **OS: Compute:** Microsoft Azure Standard B2s (2 vCPU, 4GB RAM)
 - **OS:** AlmaLinux 9 (Gen 2)
 - **Storage:** 30GB Premium SSD
@@ -16,7 +16,7 @@ This project showcases a high-performance, multi-functional server infrastructur
   - All inbound ports blocked by default
   - Port 22 (SSH) restricted to Admin IP only
 
-# Part 2: Core Stack & Web Hosting
+# Core Stack & Web Hosting
 **We utilized CyberPanel for its native OpenLiteSpeed integration, providing superior performance compared to traditional Apache/Nginx setups**.
 
 ## 🏗️ Phase 1: Infrastructure & OS Hardening
@@ -103,7 +103,7 @@ sudo systemctl enable cloudflared
 
 ## 🛠️ Nginx Service Management ##
 
-# On AlmaLinux 9, Nginx is managed via systemctl. These are the daily operational commands:
+ **On AlmaLinux 9, Nginx is managed via systemctl. These are the daily operational commands**:
 
 ```bash
 
@@ -268,17 +268,36 @@ Whenever you change php.ini, you must kill the existing PHP processes so the cha
 killall lsphp
 
 ```
-## Database Management (MariaDB/MySQL) ##
+## 🗄️ Database Management (MariaDB / MySQL)
 
-# In this project, MariaDB (a community-developed fork of MySQL) was used as the primary database engine due to its performance and compatibility with AlmaLinux 9.
+In this project, **MariaDB** — a community-developed fork of MySQL — was used as the primary database engine due to its strong performance, stability, and full compatibility with AlmaLinux 9.
 
-# 1. Service Administration
-   
+### 💡 Why MariaDB?
+
+- High performance for web applications  
+- Fully compatible with MySQL syntax and tools  
+- Reliable for production environments  
+- Open-source and actively maintained  
+- Optimized for Linux hosting servers  
+
+---
+
+## ⚙️ Service Administration
+
+Database services were managed through `systemctl` to monitor status, start, stop, and restart operations when required.
+
 ```bash
-
-# Check if MariaDB service is active
+# Check database service status
 sudo systemctl status mariadb
 
+# Start service
+sudo systemctl start mariadb
+
+# Restart service
+sudo systemctl restart mariadb
+
+# Enable on boot
+sudo systemctl enable mariadb
 # Start and Enable MariaDB on boot
 sudo systemctl enable --now mariadb
 
