@@ -32,24 +32,29 @@ sudo dnf update -y
 sudo dnf install wget curl nano tar epel-release bzip2 -y
 
 ```
-## 🔒 Phase 2: CyberPanel Installation with PHP 8.2 & OpenLiteSpeed ##
+## 🔒 CyberPanel Installation with PHP 8.2 & OpenLiteSpeed
+
+To build a complete web hosting environment, CyberPanel was installed with OpenLiteSpeed and PHP 8.2 for better speed, security, and management.
+
+### 💻 Installation Command
 
 ```bash
-
 sh <(curl https://cyberpanel.net/install.sh || wget -O - https://cyberpanel.net/install.sh)
 
 ```
-Selection during install:
+# ⚙️ Recommended Installation Selections
 
-Install CyberPanel with OpenLiteSpeed.
+| Option               | Selected Value    | Purpose                                 |
+| -------------------- | ----------------- | --------------------------------------- |
+| Web Server           | **OpenLiteSpeed** | High-performance lightweight web server |
+| Panel Type           | **CyberPanel**    | Web hosting control panel               |
+| Full Service Install | **Yes**           | Includes DNS, Mail, FTP services        |
+| Remote MySQL         | **No**            | Uses local database server              |
+| Memcached            | **Yes**           | Improves caching performance            |
+| Redis                | **Yes**           | Fast object caching / session handling  |
+| PHP Version          | **8.2**           | Modern PHP version for latest apps      |
 
-Install Full Service (DNS, Mail, FTP).
-
-Remote MySQL: No.
-
-Memcached/Redis: Yes (for performance).
-
-## 🔒 Phase 3: Zero-Trust Security (Cloudflare Tunnel)
+## 🔒: Zero-Trust Security (Cloudflare Tunnel)
 This is the core security feature that hides the server's Origin IP.
 
 1. Install Cloudflared Daemon
@@ -58,17 +63,16 @@ This is the core security feature that hides the server's Origin IP.
 curl -L --output cloudflared.rpm https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-x86_64.rpm
 sudo dnf localinstall cloudflared.rpm -y
 ```
-2. Tunnel Authentication & Creation
-3. 
+# 2. Tunnel Authentication & Creation
+
 ```bash
 # Authenticate with Cloudflare
 cloudflared tunnel login
 
 ```
-
-# Create the Tunnel
 ```bash
 
+# Create the Tunnel
 cloudflared tunnel create azure-enterprise-tunnel
 
 # Verify the tunnel list
@@ -76,7 +80,7 @@ cloudflared tunnel list
 
 ```
 # 3. Routing Traffic (Ingress Rules)
-I configured the config.yml to map subdomains to internal ports:
+**I configured the config.yml to map subdomains to internal ports**:
 
 ```bash
 YAML
@@ -170,7 +174,7 @@ sudo firewall-cmd --reload
 ```
 ## 🔄 Reverse Proxy Snippet 
 
-If you were to use Nginx as a proxy for your CyberPanel or a Node.js app, the command to create the config would be:
+**If you were to use Nginx as a proxy for your CyberPanel or a Node.js app, the command to create the config would be**:
 
 ```bash
 
@@ -294,31 +298,46 @@ sudo mysql_secure_installation
 #Actions taken: Set root password, removed anonymous users, disallowed root login remotely, and removed the test database.
 
 
-## 📧 Enterprise Mail Service Architecture ## 
-This phase covers the installation of the Mail Transfer Agent (MTA), security authentication, and bypassing Azure's outbound restrictions.
+## 📧 Enterprise Mail Service Architecture
 
-# 1. Core Mail Components
-Postfix: Handles sending and receiving emails (MTA).
+This phase covers the deployment of core mail services, authentication readiness, and preparation for reliable outbound email delivery in a cloud environment.
 
-Dovecot: Manages mail storage and allows users to access mail via IMAP/POP3 (MDA).
+---
 
-SnappyMail: The lightweight, modern webmail interface.
+## 🏗️ Core Mail Components
 
-# 2. Service Management Commands
+| Service | Role | Purpose |
+|--------|------|---------|
+| **Postfix** | MTA | Handles sending and receiving emails |
+| **Dovecot** | MDA / IMAP / POP3 | Manages mailbox storage and user access |
+| **SnappyMail** | Webmail Interface | Lightweight modern browser-based email client |
 
-To ensure the mail services are running correctly on your server:
+### 💡 Why This Stack?
+
+- Reliable email delivery  
+- Secure mailbox access  
+- Webmail from any browser  
+- Lightweight and production ready  
+
+---
+
+## ⚙️ Service Management Commands
+
+To verify services are running correctly and restart after configuration changes:
 
 ```bash
-
-# Check status of Postfix and Dovecot
-
+# Check service status
 sudo systemctl status postfix
 sudo systemctl status dovecot
 
-# Restart services after configuration changes
+# Restart mail services
 sudo systemctl restart postfix dovecot
 
 ```
+# ✅ Operational Benefit
+
+**This architecture provides a complete self-hosted business email platform with SMTP, IMAP, POP3, and webmail access**
+
 ## 🌐 DNS Engineering for Email Deliverability
 
 Setting up the mail server software is only 50% of the job — the other 50% is proper DNS configuration to ensure emails land in the Inbox instead of Spam.
