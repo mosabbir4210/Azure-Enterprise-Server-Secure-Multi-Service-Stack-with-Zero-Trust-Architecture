@@ -14,7 +14,7 @@ Network Security Group (NSG): * Inbound: All ports (80, 443, 8090) are CLOSED by
 
 Management: Port 22 (SSH) is restricted to a specific Administrative IP.
 
-Part 2: Core Stack & Web Hosting
+# Part 2: Core Stack & Web Hosting
 We utilized CyberPanel for its native OpenLiteSpeed integration, providing superior performance compared to traditional Apache/Nginx setups.
 
 ## 🏗️ Phase 1: Infrastructure & OS Hardening
@@ -286,10 +286,69 @@ sudo mysql_secure_installation
 
 #Actions taken: Set root password, removed anonymous users, disallowed root login remotely, and removed the test database.
 
-## 2. Web Hosting Features
 
-Runtime: PHP 8.2 (optimized for modern frameworks).
+## 📧 Enterprise Mail Service Architecture ## 
+This phase covers the installation of the Mail Transfer Agent (MTA), security authentication, and bypassing Azure's outbound restrictions.
 
-Database: MariaDB (MySQL) with optimized query caching.
+# 1. Core Mail Components
+Postfix: Handles sending and receiving emails (MTA).
 
-LSCache: Implemented server-level caching for sub-second page load times on the hosted Portfolio Website.
+Dovecot: Manages mail storage and allows users to access mail via IMAP/POP3 (MDA).
+
+SnappyMail: The lightweight, modern webmail interface.
+
+# 2. Service Management Commands
+
+To ensure the mail services are running correctly on your server:
+
+```bash
+
+# Check status of Postfix and Dovecot
+
+sudo systemctl status postfix
+sudo systemctl status dovecot
+
+# Restart services after configuration changes
+sudo systemctl restart postfix dovecot
+
+```
+# 3. DNS Engineering for Deliverability
+Setting up the software is only 50% of the job. The other 50% is configuring DNS to ensure emails reach the Inbox instead of the Spam folder.
+
+SPF (Sender Policy Framework): In your DNS provider (Cloudflare), add a TXT record:
+v=spf1 ip4:[Your_Azure_Public_IP] +a +mx ~all
+
+DKIM (DomainKeys Identified Mail): Generated via CyberPanel (Mail > DKIM Manager). This adds a digital signature to every email sent.
+
+DMARC: A policy to tell receiving servers what to do if SPF/DKIM fails:
+v=DMARC1; p=quarantine; adkim=r; aspf=r
+
+# 4. SSL/TLS Encryption for Mail
+Emails must be encrypted during transit. I used Let's Encrypt via CyberPanel to secure the mail server hostname.
+
+```bash
+
+# Command to check if the mail certificate is valid
+openssl s_client -connect mail.yourdomain.com:465
+
+```
+# 5. Handling Azure Port 25 Restrictions
+By default, Microsoft Azure blocks outbound traffic on Port 25 to prevent spam. To solve this, we practiced two methods:
+
+Requesting Unblock: Filing a request with Azure Support to open Port 25.
+
+Using Submission Ports: Configuring the mail client to use Port 587 (STARTTLS) or Port 465 (SSL/TLS) for authenticated sending.
+
+# 6. Mail Server Testing (CLI Tools)
+As a professional, you should test your server using the command line:
+
+```bash
+
+# Testing SMTP connectivity manually
+telnet localhost 25
+
+# Checking the mail logs in real-time for errors
+sudo tail -f /var/log/maillog
+
+```
+
