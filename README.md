@@ -1,19 +1,23 @@
 ## 🚀 Azure Enterprise Server: Secure Multi-Service Stack with Zero-Trust Architecture ##
 
 Project Abstract
-This project showcases a high-performance, multi-functional server infrastructure deployed on Microsoft Azure. The architecture transitions away from traditional, vulnerable hosting methods by implementing a Zero-Port Exposure strategy. Using AlmaLinux 9, CyberPanel, and Cloudflare Zero Trust, this stack handles Web, Mail, and Database services while keeping the origin IP completely hidden from the public internet.
 
-🏗️ Infrastructure Design & Provisioning
-Compute: Microsoft Azure Standard B2s (2 vCPU, 4GB RAM)
+This project showcases a high-performance, multi-functional server infrastructure deployed on **Microsoft Azure**. The architecture transitions away from traditional, vulnerable hosting methods by implementing a Zero-Port Exposure strategy. Using **AlmaLinux 9**, **CyberPanel**, and **Cloudflare Zero Trust**, this stack handles Web, Mail, and Database services while keeping the origin IP completely hidden from the public internet.
 
-OS: AlmaLinux 9 (Gen 2)
+## 🏗️ Infrastructure Design & Provisioning ##
 
-Storage: 30GB Premium SSD
 
-Networking: Azure NSG (All inbound ports closed by default; Port 22 restricted to Admin IP)
+## 🖥️ Server Environment
+- **OS: Compute:** Microsoft Azure Standard B2s (2 vCPU, 4GB RAM)
+- **OS:** AlmaLinux 9 (Gen 2)
+- **Storage:** 30GB Premium SSD
+- **Cloud Provider:** Microsoft Azure
+- **Networking:** Azure NSG configured
+  - All inbound ports blocked by default
+  - Port 22 (SSH) restricted to Admin IP only
 
 # Part 2: Core Stack & Web Hosting
-We utilized CyberPanel for its native OpenLiteSpeed integration, providing superior performance compared to traditional Apache/Nginx setups.
+**We utilized CyberPanel for its native OpenLiteSpeed integration, providing superior performance compared to traditional Apache/Nginx setups**.
 
 ## 🏗️ Phase 1: Infrastructure & OS Hardening
 Before installing any services, the AlmaLinux 9 environment was secured and optimized.
@@ -28,7 +32,7 @@ sudo dnf update -y
 sudo dnf install wget curl nano tar epel-release bzip2 -y
 
 ```
-## 🔒 Phase 2: CyberPanel Installation with PHP 8.2 & OpenLiteSpeed
+## 🔒 Phase 2: CyberPanel Installation with PHP 8.2 & OpenLiteSpeed ##
 
 ```bash
 
@@ -130,15 +134,17 @@ nginx -V
 
 ## 📂 File Paths & Directory Structure
 
-In a professional setup, you need to know where the important files live:
+A professional Nginx deployment should clearly document where critical files and folders are located:
 
-Main Configuration: /etc/nginx/nginx.conf
+| Component | Path | Purpose |
+|-----------|------|---------|
+| Main Configuration | `/etc/nginx/nginx.conf` | Core Nginx settings and global directives |
+| Server Blocks (vHosts) | `/etc/nginx/conf.d/` | Store individual `.conf` files for each domain / virtual host |
+| Default Web Root | `/usr/share/nginx/html` | Default location for website files |
+| Access Log | `/var/log/nginx/access.log` | Records incoming client requests |
+| Error Log | `/var/log/nginx/error.log` | Stores warnings, errors, and troubleshooting logs |
 
-Server Blocks (vHosts): /etc/nginx/conf.d/ (This is where you create .conf files for your domains)
-
-Default Web Root: /usr/share/nginx/html
-
-Log Files: /var/log/nginx/access.log and /var/log/nginx/error.log
+> 💡 Keeping these paths organized helps with maintenance, troubleshooting, and multi-site hosting.
 
 
 ## 🛡️ Security & Hardening Commands
@@ -188,7 +194,7 @@ server {
 ```
 ## PHP 8.2 Installation & Optimization ##
 
-# In an enterprise environment, PHP must be tuned for security and speed. We utilized lsphp (LiteSpeed PHP) to ensure seamless integration with the OpenLiteSpeed engine.
+**In an enterprise environment, PHP must be tuned for security and speed. We utilized lsphp (LiteSpeed PHP) to ensure seamless integration with the OpenLiteSpeed engine**.
 
 # 1. Installation via CyberPanel CLI
 CyberPanel usually handles the base installation, but you can manually install or add extensions using the following commands on AlmaLinux:
@@ -201,26 +207,29 @@ sudo dnf install lsphp82 lsphp82-common lsphp82-mysqlnd lsphp82-gd lsphp82-proce
 
 ```
 
-# 2. PHP Configuration (php.ini)
-To handle professional web applications and large file uploads (like portfolio assets), we modified the php.ini settings.
+## ⚙️ PHP Configuration (`php.ini`)
 
-File Path: /usr/local/lsws/lsphp82/etc/php.ini
+To support professional web applications and larger file uploads (such as portfolio assets, images, and project files), the PHP configuration was optimized.
 
-# Edit the PHP configuration
+### 📄 File Path
 
+`/usr/local/lsws/lsphp82/etc/php.ini`
+
+### ✏️ Edit the PHP Configuration
+
+```bash
 sudo nano /usr/local/lsws/lsphp82/etc/php.ini
 
-Key Optimizations Applied:
+```
+# 🔧 Key Optimizations Applied
 
-memory_limit = 256M (Ensures enough RAM for heavy scripts)
-
-upload_max_filesize = 64M (Allows high-quality image uploads)
-
-post_max_size = 64M
-
-max_execution_time = 300
-
-date.timezone = Asia/Dhaka (Setting local time for logs)
+| Setting               | Value        | Purpose                                       |
+| --------------------- | ------------ | --------------------------------------------- |
+| `memory_limit`        | `256M`       | Ensures enough RAM for heavy scripts          |
+| `upload_max_filesize` | `64M`        | Allows high-quality image uploads             |
+| `post_max_size`       | `64M`        | Supports larger form submissions              |
+| `max_execution_time`  | `300`        | Prevents timeout during long processes        |
+| `date.timezone`       | `Asia/Dhaka` | Sets local timezone for logs and applications |
 
 
 ## 3. Enabling OPcache for High Speed
@@ -235,7 +244,7 @@ opcache.memory_consumption=128
 ```
 
 # 4. Verifying PHP Status
-You can verify which version is active and check for installed modules using these commands:
+**You can verify which version is active and check for installed modules using these commands**:
 
 ```bash
 
@@ -275,7 +284,7 @@ mysql -V
 ```
 # 2. Security Hardening
 
-After installation, I ran the security script to remove anonymous users and secure the root access:
+**After installation, I ran the security script to remove anonymous users and secure the root access**:
 
 ```bash
 
@@ -310,19 +319,36 @@ sudo systemctl status dovecot
 sudo systemctl restart postfix dovecot
 
 ```
-# 3. DNS Engineering for Deliverability
-Setting up the software is only 50% of the job. The other 50% is configuring DNS to ensure emails reach the Inbox instead of the Spam folder.
+## 🌐 DNS Engineering for Email Deliverability
 
-SPF (Sender Policy Framework): In your DNS provider (Cloudflare), add a TXT record:
-v=spf1 ip4:[Your_Azure_Public_IP] +a +mx ~all
+Setting up the mail server software is only 50% of the job — the other 50% is proper DNS configuration to ensure emails land in the Inbox instead of Spam.
 
-DKIM (DomainKeys Identified Mail): Generated via CyberPanel (Mail > DKIM Manager). This adds a digital signature to every email sent.
+### 📌 Core DNS Records Configured
 
-DMARC: A policy to tell receiving servers what to do if SPF/DKIM fails:
-v=DMARC1; p=quarantine; adkim=r; aspf=r
+| Record Type | Purpose | Example Value |
+|------------|---------|---------------|
+| **SPF** | Authorizes your server to send emails for the domain | `v=spf1 ip4:[Your_Azure_Public_IP] +a +mx ~all` |
+| **DKIM** | Adds a digital signature to outgoing emails for trust verification | Generated via CyberPanel → Mail → DKIM Manager |
+| **DMARC** | Tells receiving servers how to handle SPF/DKIM failures | `v=DMARC1; p=quarantine; adkim=r; aspf=r` |
 
-# 4. SSL/TLS Encryption for Mail
-Emails must be encrypted during transit. I used Let's Encrypt via CyberPanel to secure the mail server hostname.
+### 💡 Why It Matters
+
+These records improve email reputation, reduce spoofing risk, and significantly increase inbox delivery rates.
+
+---
+
+## 🔒 SSL/TLS Encryption for Mail
+
+Emails should be encrypted during transmission for privacy and trust.
+
+I used **Let's Encrypt SSL** via CyberPanel to secure the mail server hostname.
+
+### ✅ Benefits
+
+- Encrypts SMTP / IMAP / POP3 traffic  
+- Prevents interception during transit  
+- Improves trust with receiving mail providers  
+- Required for modern secure email delivery
 
 ```bash
 
@@ -330,15 +356,36 @@ Emails must be encrypted during transit. I used Let's Encrypt via CyberPanel to 
 openssl s_client -connect mail.yourdomain.com:465
 
 ```
-# 5. Handling Azure Port 25 Restrictions
-By default, Microsoft Azure blocks outbound traffic on Port 25 to prevent spam. To solve this, we practiced two methods:
+## ☁️ Handling Azure Port 25 Restrictions
 
-Requesting Unblock: Filing a request with Azure Support to open Port 25.
+By default, Microsoft Azure restricts outbound traffic on **Port 25** to reduce spam and abuse risks.  
+To ensure reliable email sending, two professional methods were practiced.
 
-Using Submission Ports: Configuring the mail client to use Port 587 (STARTTLS) or Port 465 (SSL/TLS) for authenticated sending.
+### 📌 Solutions Implemented
+
+| Method | Description | Benefit |
+|-------|-------------|---------|
+| **Request Port 25 Unblock** | Submit a request to Azure Support for outbound SMTP access | Enables direct mail relay from the server |
+| **Use Submission Ports** | Configure mail clients to use authenticated SMTP ports | More secure and commonly recommended |
+
+### 🔧 Recommended SMTP Ports
+
+| Port | Encryption | Usage |
+|------|------------|------|
+| `587` | STARTTLS | Standard authenticated mail submission |
+| `465` | SSL/TLS | Secure SMTP connection |
+| `25` | Plain / Relay | Server-to-server mail transfer |
+
+### 💡 Best Practice
+
+For modern hosting environments, using **Port 587** or **Port 465** is preferred for secure authenticated email delivery.
+
+### ✅ Result
+
+**This approach helps bypass cloud provider restrictions while maintaining secure and professional email operations**.
 
 # 6. Mail Server Testing (CLI Tools)
-As a professional, you should test your server using the command line:
+**As a professional, you should test your server using the command line**:
 
 ```bash
 
