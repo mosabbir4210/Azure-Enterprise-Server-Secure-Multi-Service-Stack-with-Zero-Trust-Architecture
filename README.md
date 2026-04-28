@@ -628,6 +628,17 @@ Enterprise-grade performance was achieved through the following enhancements:
 | **LiteSpeed Engine** | High concurrency with low resource usage |
 
 ---
+## ⚡ Performance Analytics (Cloudflare)
+
+<p align="center">
+  <a href="screenshorts/performance-analytics-cloudflare.png">
+    <img src="screenshorts/performance-analytics-cloudflare.png" alt="Cloudflare Performance Analytics Dashboard" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Cloudflare analytics showing optimized traffic delivery, caching efficiency, and reduced latency</i>
+</p>
 
 ## 🛡️ Security Posture
 
