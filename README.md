@@ -417,6 +417,18 @@ sudo systemctl enable --now mariadb
 mysql -V
 
 ```
+## 🗄️ MariaDB Service Status
+
+<p align="center">
+  <a href="screenshorts/DBstatus.png">
+    <img src="screenshorts/DBstatus.png" alt="MariaDB Service Status" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>MariaDB service running and verified via systemctl status</i>
+</p>
+
 # 2. Security Hardening
 
 **After installation, I ran the security script to remove anonymous users and secure the root access**:
