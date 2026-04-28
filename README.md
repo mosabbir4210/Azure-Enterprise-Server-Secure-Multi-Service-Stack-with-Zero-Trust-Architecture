@@ -330,6 +330,7 @@ To support professional web applications, media uploads, and stable execution, t
 sudo nano /usr/local/lsws/lsphp82/etc/php.ini
 
 ```
+
 # 🔧 Recommended Settings
 
 | Setting               | Value        | Purpose                          |
@@ -339,6 +340,18 @@ sudo nano /usr/local/lsws/lsphp82/etc/php.ini
 | `post_max_size`       | `64M`        | Supports bigger form submissions |
 | `max_execution_time`  | `300`        | Prevents timeout on long tasks   |
 | `date.timezone`       | `Asia/Dhaka` | Correct local timestamps         |
+
+### 🐘 PHP Configuration Preview
+
+<p align="center">
+  <a href="screenshorts/phppip.png">
+    <img src="screenshorts/phppip.png" alt="PHP Configuration php.ini" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Production-optimized php.ini configuration for performance and stability</i>
+</p>
 
 # 3️⃣ OPcache Performance Boost
 
