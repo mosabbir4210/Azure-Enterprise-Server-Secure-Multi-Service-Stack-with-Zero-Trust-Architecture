@@ -380,7 +380,7 @@ killall lsphp
 
 ```
 
-## 🗄️ Database Management (MariaDB / MySQL)
+# 🗄️ Database Management (MariaDB / MySQL)
 
 In this project, **MariaDB** — a community-developed fork of MySQL — was used as the primary database engine due to its strong performance, stability, and full compatibility with AlmaLinux 9.
 
