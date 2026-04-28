@@ -36,6 +36,11 @@ This project demonstrates my hands-on ability to deploy, secure, optimize, and d
 | **Storage** | 30GB Premium SSD |
 | **Security Layer** | Azure NSG |
 
+
+  <p align="center">
+  <img src="screenshorts/AzureVM.png" alt="Hybrid Cloud Overview" width="850">
+</p>
+
 ### 🔒 Network Security Model
 
 - All inbound ports blocked by default  
