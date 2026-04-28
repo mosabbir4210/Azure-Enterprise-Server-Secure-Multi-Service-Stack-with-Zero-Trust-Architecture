@@ -108,8 +108,16 @@ sh <(curl https://cyberpanel.net/install.sh || wget -O - https://cyberpanel.net/
 | PHP Version          | **8.2**           | Modern PHP version for latest apps      |
 
 
-  <p align="center">
-  <img src="screenshorts/Cyberpanel.png" alt="Hybrid Cloud Overview" width="850">
+## 🖥️ CyberPanel Dashboard
+
+<p align="center">
+  <a href="screenshorts/Cyberpanel.png">
+    <img src="screenshorts/Cyberpanel.png" alt="CyberPanel Dashboard" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>CyberPanel Control Panel managing OpenLiteSpeed, domains, and hosting services</i>
 </p>
 
 ## 🔒: Zero-Trust Security (Cloudflare Tunnel)
