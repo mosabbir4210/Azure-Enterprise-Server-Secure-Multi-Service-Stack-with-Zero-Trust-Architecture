@@ -24,9 +24,38 @@ Built on **AlmaLinux 9 (Enterprise Linux)** and powered by **OpenLiteSpeed**, th
 
 ---
 
-  <p align="center">
+## 🌐 Project Overview & Infrastructure Topology
+
+<p align="center">
   <img src="screenshorts/Overview.png" alt="Hybrid Cloud Overview" width="850">
 </p>
+
+### 🏗️ Architecture Breakdown
+The diagram above illustrates a **Security-First Architecture** designed to decouple the application layer from the public internet. By utilizing a **Hybrid Cloud-Native approach**, we ensure that the server remains "invisible" while delivering high-speed content.
+
+---
+
+### 🔄 The Logic Flow (How it Works)
+
+1.  **The User Request:** A visitor hits `mridu.me`. The request is first intercepted by the **Cloudflare Global Edge Network**.
+2.  **Zero-Trust Filtering:** Cloudflare’s **WAF** and **DDoS Protection** scrub the traffic for malicious patterns.
+3.  **The Invisible Bridge:** Instead of sending traffic to an IP address, Cloudflare communicates with the **Cloudflared Daemon** running inside the Azure VM via an outbound-only encrypted tunnel.
+4.  **Local Orchestration:** Once inside, **OpenLiteSpeed** handles the request, fetching data from **MariaDB** or serving cached content via **LSCache** for sub-second delivery.
+5.  **Response:** The data is sent back through the same secure tunnel, ensuring the **Server's Origin IP is never exposed** to the public.
+
+---
+
+### 🛠️ Core Technology Stack
+
+| Layer | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Compute** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" width="18"/> **Microsoft Azure** | Scalable Infrastructure as a Service (IaaS). |
+| **OS** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" width="18"/> **AlmaLinux 9** | Enterprise-grade stability & RHEL compatibility. |
+| **Edge Security** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cloudflare/cloudflare-original.svg" width="18"/> **Cloudflare** | Zero-Trust Tunneling & Edge Caching. |
+| **Web Server** | **OpenLiteSpeed** | Event-driven architecture for high concurrency. |
+| **Database** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" width="18"/> **MariaDB** | Optimized relational data management. |
+
+---
 
   ## 🎯 Why This Project Matters
 
