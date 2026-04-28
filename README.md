@@ -601,9 +601,20 @@ This live environment demonstrates the effectiveness of the **Zero-Trust Securit
 | **Availability** | 🟢 Live & Production Ready |
 | **Security Layer** | Origin IP Hidden via Cloudflare Tunnel |
 | **SSL Status** | HTTPS Enabled |
+| **Availability** | Publicly Accessible with Protected Backend |
 
 ---
+## 🌐 Live Website Preview
 
+<p align="center">
+  <a href="https://mridu.me" target="_blank">
+    <img src="screenshorts/LiveWebsite.png" alt="Live Portfolio Website" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Live production portfolio deployed on Azure with Cloudflare Zero Trust security</i>
+</p>
 ## 🛠️ Deployment Configuration
 
 | Feature | Implementation |
@@ -650,27 +661,6 @@ Enterprise-grade performance was achieved through the following enhancements:
 | **Azure NSG** | Strict inbound traffic control |
 
 ---
-## 🔗 Live Access
-
-| Item | Details |
-|------|---------|
-| **Primary Domain** | `https://mridu.me` |
-| **Status** | 🟢 Live & Production Ready |
-| **Security** | Origin IP Hidden via Cloudflare Tunnel |
-| **SSL/TLS** | HTTPS Enabled |
-| **Availability** | Publicly Accessible with Protected Backend |
-
-## 🌐 Live Website Preview
-
-<p align="center">
-  <a href="https://mridu.me" target="_blank">
-    <img src="screenshorts/LiveWebsite.png" alt="Live Portfolio Website" width="900">
-  </a>
-</p>
-
-<p align="center">
-  <i>Live production portfolio deployed on Azure with Cloudflare Zero Trust security</i>
-</p>
 
 ### ✅ Deployment Summary
 
