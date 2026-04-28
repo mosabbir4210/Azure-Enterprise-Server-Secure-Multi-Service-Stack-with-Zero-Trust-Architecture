@@ -442,7 +442,7 @@ sudo mysql_secure_installation
 **Actions taken: Set root password, removed anonymous users, disallowed root login remotely, and removed the test database.**
 
 
-## 📧 Enterprise Mail Service Architecture
+# 📧 Enterprise Mail Service Architecture
 
 **This phase covers the deployment of core mail services, authentication readiness, and preparation for reliable outbound email delivery in a cloud environment.**
 
@@ -478,6 +478,15 @@ sudo systemctl status dovecot
 sudo systemctl restart postfix dovecot
 
 ```
+### 🧪 Mail Verification Output
+
+<p align="center">
+  <img src="screenshorts/postfix_dovecot_DNSrecord.png" alt="Mail Verification Output" width="900">
+</p>
+
+<p align="center">
+  <i>Postfix & Dovecot running with DNS SPF verification</i>
+</p>
 # ✅ Operational Benefit
 
 **This architecture provides a complete self-hosted business email platform with SMTP, IMAP, POP3, and webmail access**
