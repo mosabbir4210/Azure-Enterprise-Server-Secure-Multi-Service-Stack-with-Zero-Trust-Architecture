@@ -660,6 +660,18 @@ Enterprise-grade performance was achieved through the following enhancements:
 | **SSL/TLS** | HTTPS Enabled |
 | **Availability** | Publicly Accessible with Protected Backend |
 
+## 🌐 Live Website Preview
+
+<p align="center">
+  <a href="https://mridu.me" target="_blank">
+    <img src="screenshorts/LiveWebsite.png" alt="Live Portfolio Website" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Live production portfolio deployed on Azure with Cloudflare Zero Trust security</i>
+</p>
+
 ### ✅ Deployment Summary
 
 **The website is running in a secure production environment with Cloudflare edge protection, encrypted HTTPS traffic, and hidden server origin infrastructure.**
