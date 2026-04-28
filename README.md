@@ -737,5 +737,7 @@ This deployment serves as a real-world showcase of secure cloud hosting, web opt
 This project is licensed under the **MIT License**. You are free to use, modify, and distribute this architecture for your own needs.
 
 ---
-*Created and Maintained by **MD. Abdulla Al Mosabbir** (Microsoft Learn Student Ambassador | System & Cloud Infrastructure Engineer)*
+*Created and Maintained by
+**MD. Abdulla Al Mosabbir** 
+(Microsoft Learn Student Ambassador | System & Cloud Infrastructure Engineer)*
 
