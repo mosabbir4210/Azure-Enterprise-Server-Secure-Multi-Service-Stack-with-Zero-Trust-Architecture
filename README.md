@@ -102,7 +102,7 @@ CyberPanel was selected for its native **OpenLiteSpeed** integration, offering h
 
 ---
 
-# 🏗️ Phase 1: Infrastructure & OS Hardening
+# 🏗️ Infrastructure & OS Hardening
 
 Before deploying production services, the operating system was updated, secured, and prepared with administrative utilities.
 
