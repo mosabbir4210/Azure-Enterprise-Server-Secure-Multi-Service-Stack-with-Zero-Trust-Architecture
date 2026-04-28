@@ -1,26 +1,17 @@
 # 🚀 Azure Enterprise Infrastructure: Zero-Trust Multi-Service Stack
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" alt="azure" width="60" height="60"/>
-</p>
-
 ## 📌 Project Abstract
 
-This project focuses on the design and deployment of a **hardened, high-availability multi-service infrastructure** orchestrated on **Microsoft Azure**. Moving beyond conventional hosting models, this environment implements a **Zero-Port Exposure Strategy**—effectively eliminating the server's attack surface by masking the Origin IP from the public internet.
+This project focuses on the design and deployment of a **hardened, high-availability multi-service infrastructure** orchestrated on Microsoft Azure. Moving beyond conventional hosting models, this environment implements a **Zero-Port Exposure Strategy**—effectively eliminating the server's attack surface by masking the Origin IP from the public internet.
 
 Built on **AlmaLinux 9 (Enterprise Linux)** and powered by **OpenLiteSpeed**, the architecture leverages **Cloudflare Zero Trust Tunnels** to bridge the gap between security and performance. 
 
----
-
-### 🏗️ Key Architectural Pillars
-
-| Component | Technical Implementation |
-| :--- | :--- |
-| **🌐 Web Orchestration** | High-concurrency hosting via **CyberPanel** & **OpenLiteSpeed**. |
-| **📧 Enterprise Mail** | Redundant business email (SMTP/IMAP) with **SPF, DKIM, DMARC** optimization. |
-| **🗄️ Hardened Database** | Optimized **MariaDB** instance for secure, low-latency data management. |
-| **🔐 Invisible Perimeter** | **Cloudflare Zero-Trust Tunnels** hiding the server's Origin IP from public threats. |
-| **🛡️ Defense-in-Depth** | Integrated **WAF**, **SSL/TLS Encryption**, and strict **Azure NSG** policies. |
+### 🏗️ Key Architectural Pillars:
+- **🌐 Secure Web Orchestration:** High-concurrency web hosting via CyberPanel & OpenLiteSpeed.
+- **📧 Enterprise Mail Stack:** Fully-redundant business email infrastructure (SMTP/IMAP) with optimized deliverability (SPF, DKIM, DMARC).
+- **🗄️ Hardened Database Engine:** Optimized MariaDB instance for secure, low-latency data management.
+- **🔐 Invisible Perimeter:** Zero-Trust architecture that hides the server's Origin IP and protects against DDoS and unauthorized intrusion.
+- **🛡️ Layered Security (Defense-in-Depth):** Integrated WAF, SSL/TLS encryption at the edge, and strict Azure NSG policies.
 
 ---
 
