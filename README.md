@@ -107,6 +107,11 @@ sh <(curl https://cyberpanel.net/install.sh || wget -O - https://cyberpanel.net/
 | Redis                | **Yes**           | Fast object caching / session handling  |
 | PHP Version          | **8.2**           | Modern PHP version for latest apps      |
 
+
+  <p align="center">
+  <img src="screenshorts/Cyberpanel.png" alt="Hybrid Cloud Overview" width="850">
+</p>
+
 ## 🔒: Zero-Trust Security (Cloudflare Tunnel)
 This is the core security feature that hides the server's Origin IP.
 
