@@ -724,20 +724,50 @@ Grafana dashboards were integrated with Zabbix data sources to provide:
 - Alert trends & historical analytics  
 
 ---
+## 📊 Infrastructure Monitoring (Zabbix Dashboard)
+
+<p align="center">
+  <a href="screenshorts/dashboard.png">
+    <img src="screenshorts/dashboard.png" alt="Zabbix Monitoring Dashboard" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Real-time monitoring of system resources, services, and network performance using Zabbix</i>
+</p>
+
+---
+
+### 🔗 Full Monitoring Setup Repository
+
+👉 Complete Zabbix deployment and configuration available here:  
+🔗 https://github.com/mosabbir4210/Zabbix-Setup-Azure
 
 ## ✅ Result
 
 A production-ready observability stack that improves server stability, troubleshooting speed, and enterprise-grade operational awareness.
 
-## 🚀 Live Proof of Concept
+---
 
-This deployment serves as a real-world showcase of secure cloud hosting, web optimization, and production-grade infrastructure engineering.
+## 🚀 Deployment Validation & Proof of Concept
 
-## 📜 License
-This project is licensed under the **MIT License**. You are free to use, modify, and distribute this architecture for your own needs.
+This environment is not just a static site; it is a **live technical demonstration** of secure, high-availability cloud architecture. It validates the seamless integration of **Zero-Trust networking**, **automated security hardening**, and **advanced performance tuning** in a production-ready ecosystem.
 
 ---
-*Created and Maintained by
-**MD. Abdulla Al Mosabbir** 
-(Microsoft Learn Student Ambassador | System & Cloud Infrastructure Engineer)*
+
+## 📜 Licensing & Usage
+This repository is open-sourced under the **MIT License**. It is designed to be a blueprint for the community—feel free to fork, adapt, and deploy this architecture for your own enterprise or personal projects.
+
+---
+
+## 👨‍💻 Engineering & Maintenance
+
+**MD. Abdulla Al Mosabbir (Mridu)** *Systems & Cloud Infrastructure Engineer | Microsoft Learn Student Ambassador*
+
+> **Expertise:** Azure Cloud Architecture • Linux System Administration • Network Security • DevOps & Automation
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-mridu.me-blue?style=for-the-badge&logo=google-chrome&logoColor=white)](https://mridu.me)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/mosabbirmridu)
+
+---
 
