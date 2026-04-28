@@ -145,6 +145,18 @@ cloudflared tunnel create azure-enterprise-tunnel
 cloudflared tunnel list
 
 ```
+## ☁️ Cloudflare Zero Trust Tunnel
+
+<p align="center">
+  <a href="screenshorts/CloudTunnel.png.png">
+    <img src="screenshorts/CloudTunnel.png" alt="Cloudflare Zero Trust Tunnel Dashboard" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Cloudflare Tunnel securely exposing internal services without public IP exposure</i>
+</p>
+
 # 3. Routing Traffic (Ingress Rules)
 **I configured the config.yml to map subdomains to internal ports**:
 
