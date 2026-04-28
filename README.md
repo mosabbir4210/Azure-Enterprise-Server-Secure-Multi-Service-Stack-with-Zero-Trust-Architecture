@@ -305,6 +305,17 @@ lsphp82-process lsphp82-mbstring lsphp82-xml lsphp82-opcache -y
 | `xml`      | XML parsing                  |
 | `opcache`  | PHP code acceleration        |
 
+## 🐘 PHP 8.2 Configuration & Modules
+
+<p align="center">
+  <a href="screenshorts/PHPVersion.png">
+    <img src="screenshorts/PHPVersion.png" alt="PHP Version and Installed Modules" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Verification of PHP 8.2 runtime and enabled modules in LiteSpeed environment</i>
+</p>
 2️⃣ PHP Configuration (php.ini)
 
 To support professional web applications, media uploads, and stable execution, the PHP runtime was optimized.
