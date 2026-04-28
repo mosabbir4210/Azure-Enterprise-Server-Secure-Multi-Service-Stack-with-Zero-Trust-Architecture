@@ -1,17 +1,28 @@
-# 🚀 Azure Enterprise Server: Secure Multi-Service Stack with Zero-Trust Architecture
+# 🚀 Azure Enterprise Infrastructure: Zero-Trust Multi-Service Stack
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" alt="azure" width="60" height="60"/>
+</p>
 
 ## 📌 Project Abstract
 
-This project demonstrates a **high-performance, security-focused multi-service server infrastructure** deployed on Microsoft Azure.  
-Instead of relying on traditional exposed hosting models, the environment follows a **Zero-Port Exposure Strategy**, where public access is minimized and administrative access is tightly controlled.
+This project focuses on the design and deployment of a **hardened, high-availability multi-service infrastructure** orchestrated on **Microsoft Azure**. Moving beyond conventional hosting models, this environment implements a **Zero-Port Exposure Strategy**—effectively eliminating the server's attack surface by masking the Origin IP from the public internet.
 
-Using **AlmaLinux 9**, **CyberPanel**, **OpenLiteSpeed**, and **Cloudflare Zero Trust**, the platform securely delivers:
+Built on **AlmaLinux 9 (Enterprise Linux)** and powered by **OpenLiteSpeed**, the architecture leverages **Cloudflare Zero Trust Tunnels** to bridge the gap between security and performance. 
 
-- 🌐 Web Hosting Services  
-- 📧 Business Mail Services  
-- 🗄️ Database Services  
-- 🔐 Hidden Origin IP Protection  
-- 🛡️ Layered Security Controls
+---
+
+### 🏗️ Key Architectural Pillars
+
+| Component | Technical Implementation |
+| :--- | :--- |
+| **🌐 Web Orchestration** | High-concurrency hosting via **CyberPanel** & **OpenLiteSpeed**. |
+| **📧 Enterprise Mail** | Redundant business email (SMTP/IMAP) with **SPF, DKIM, DMARC** optimization. |
+| **🗄️ Hardened Database** | Optimized **MariaDB** instance for secure, low-latency data management. |
+| **🔐 Invisible Perimeter** | **Zero-Trust Tunnels** hiding the server's Origin IP from public threats. |
+| **🛡️ Defense-in-Depth** | Integrated **WAF**, **SSL/TLS Encryption**, and strict **Azure NSG** policies. |
+
+---
 
   <p align="center">
   <img src="screenshorts/Overview.png" alt="Hybrid Cloud Overview" width="850">
@@ -764,7 +775,7 @@ This repository is open-sourced under the **MIT License**. It is designed to be 
 
 **MD. Abdulla Al Mosabbir (Mridu)** *Systems & Cloud Infrastructure Engineer | Microsoft Learn Student Ambassador*
 
-> **Expertise:** Azure Cloud Architecture • Linux System Administration • Network Security • DevOps & Automation
+> **Expertise:** Azure Cloud Architecture • Linux System Administration • Network Security • System Support
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-mridu.me-blue?style=for-the-badge&logo=google-chrome&logoColor=white)](https://mridu.me)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/mosabbirmridu)
