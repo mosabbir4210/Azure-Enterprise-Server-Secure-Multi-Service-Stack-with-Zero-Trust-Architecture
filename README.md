@@ -19,7 +19,7 @@ Built on **AlmaLinux 9 (Enterprise Linux)** and powered by **OpenLiteSpeed**, th
 | **🌐 Web Orchestration** | High-concurrency hosting via **CyberPanel** & **OpenLiteSpeed**. |
 | **📧 Enterprise Mail** | Redundant business email (SMTP/IMAP) with **SPF, DKIM, DMARC** optimization. |
 | **🗄️ Hardened Database** | Optimized **MariaDB** instance for secure, low-latency data management. |
-| **🔐 Invisible Perimeter** | **Zero-Trust Tunnels** hiding the server's Origin IP from public threats. |
+| **🔐 Invisible Perimeter** | **Cloudflare Zero-Trust Tunnels** hiding the server's Origin IP from public threats. |
 | **🛡️ Defense-in-Depth** | Integrated **WAF**, **SSL/TLS Encryption**, and strict **Azure NSG** policies. |
 
 ---
