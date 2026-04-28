@@ -178,6 +178,17 @@ sudo systemctl start cloudflared
 sudo systemctl enable cloudflared
 
 ```
+## 📡 Cloudflare Tunnel Status
+
+<p align="center">
+  <a href="screenshorts/Tunnelstatus.png">
+    <img src="screenshorts/Tunnelstatus.png" alt="Cloudflare Tunnel Status Dashboard" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <i>Real-time status monitoring of Cloudflare Tunnel ensuring secure and stable connectivity</i>
+</p>
 
 ## 🛠️ Nginx Service Management ##
 
